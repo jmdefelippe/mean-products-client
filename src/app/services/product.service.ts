@@ -33,9 +33,17 @@ export class ProductService {
 
 
     
-    this.http.get(this.url, { headers });
+    // this.http.get(this.url, { headers });
     
-    return this.http.get(this.url);
+    // return fetch(this.url, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
+    //   }
+    // });
+
+    // return this.http.get(this.url);
   }
 
   deleteProduct(id: string): Observable<any> {
