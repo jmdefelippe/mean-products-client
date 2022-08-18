@@ -18,7 +18,7 @@ export class CreateProductComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private router: Router,
               private toastr: ToastrService,
-              private _productoService: ProductService,
+              private _productService: ProductService,
               private aRouter: ActivatedRoute) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
@@ -43,13 +43,13 @@ export class CreateProductComponent implements OnInit {
 
     if(this.id !== null) {
       // update product
-      this._productoService.updateProduct(this.id, PRODUCT).subscribe(data => {
+      this._productService.updateProduct(this.id, PRODUCT).subscribe(data => {
         this.toastr.info('El producto fue actualizado con éxito!', 'Producto actualizado!', { timeOut: 1500 });
         this.router.navigate(['/']);
       })
     } else {
       // create product
-      this._productoService.createProduct(PRODUCT).subscribe(data => {
+      this._productService.createProduct(PRODUCT).subscribe(data => {
         this.toastr.success('El producto fue registrado con éxito!', 'Producto registrado!', { timeOut: 1500 });
         this.router.navigate(['/']);
       }, error => {
@@ -62,7 +62,7 @@ export class CreateProductComponent implements OnInit {
   isUpdate() {
     if(this.id !== null) {
       this.title = 'Editar producto';
-      this._productoService.getProduct(this.id).subscribe(data => {
+      this._productService.getProduct(this.id).subscribe(data => {
         this.productForm.patchValue({
           name: data.name,
           category: data.category,

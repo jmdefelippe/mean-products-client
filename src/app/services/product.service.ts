@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
@@ -8,11 +8,33 @@ import { Product } from '../models/product';
 })
 export class ProductService {
   // ver variables de entorno: API = https://mean-products-server.herokuapp.com
-  url = 'https://mean-products-server.herokuapp.com/api/products/';
+  // url = 'https://mean-products-server.herokuapp.com/api/products/';
+  url = 'http://localhost:4000/api/products/';
 
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<any> {
+    // console.log(localStorage.getItem("ACCESS_TOKEN"));
+
+    // this.http.get(this.url,{
+    //   headers: {'Authorization':`Bearer ${localStorage.getItem("ACCESS_TOKEN")}`}
+    // });
+    
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization',  `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`);
+
+    console.log(headers);
+
+
+    // const options = new RequestOptions({
+    //   headers: header,
+    // });
+    // return this._http.get(this.ApiURL + "api/Subscriptions/IsClientCreditCardExits/" + companyId + "/", options);    
+
+
+    
+    this.http.get(this.url, { headers });
+    
     return this.http.get(this.url);
   }
 

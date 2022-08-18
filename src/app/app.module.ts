@@ -10,12 +10,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
+import { CreateUserComponent } from './components/auth/create-user/create-user.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateProductComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    CreateUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
