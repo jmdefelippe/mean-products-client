@@ -12,9 +12,10 @@ const routes: Routes = [
   
   { path: 'crear-cuenta', component: CreateUserComponent },
   
-  { path: '', component: ListProductsComponent },
+
+  { path: 'listado-productos', component: ListProductsComponent },
   
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
 
 
   { path: 'crear-producto', component: CreateProductComponent },
