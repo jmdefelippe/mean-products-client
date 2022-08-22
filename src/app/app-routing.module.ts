@@ -7,22 +7,15 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/auth', pathMatch: 'full' },
-  //{ path: 'auth', loadChildren: () => import ('./auth/auth.module').then(x => x.AuthModule) },
-  
   { path: 'crear-cuenta', component: CreateUserComponent },
-  
 
-  { path: 'listado-productos', component: ListProductsComponent },
-  
-  { path: '', component: LoginComponent },
-
+  { path: '', component: ListProductsComponent },
+  { path: 'login', component: LoginComponent },
 
   { path: 'crear-producto', component: CreateProductComponent },
   { path: 'editar-producto/:id', component: CreateProductComponent },
   // { path: '**', redirectTo: '', pathMatch: 'full'}
   { path: '**', component: PageNotFoundComponent }
-
 ];
 
 @NgModule({

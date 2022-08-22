@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -12,9 +12,16 @@ export class ListProductsComponent implements OnInit {
   listProducts: Product[] = [];
 
   constructor(private _productService: ProductService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    if (!localStorage.getItem("ACCESS_TOKEN")) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/']);
+    }
+
     this.getProducts();
   }
 
