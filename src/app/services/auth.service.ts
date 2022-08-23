@@ -5,22 +5,21 @@ import { JwtResponse } from '../models/jwt-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserLoginDto } from '../models/dto/userLoginDto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  url = 'http://localhost:4000';
   authSubject = new BehaviorSubject(false);
   private token: string;
-  
+
   constructor(private httpClient: HttpClient) {
     this.token = '';
   }
 
   createUser(user: User): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.url}/api/users`,
+    return this.httpClient.post<JwtResponse>(`${environment.API_URL}/api/users`,
     user).pipe(tap(
       (res: JwtResponse) => {
         if (res) {
@@ -31,7 +30,7 @@ export class AuthService {
   }
 
   login(user: UserLoginDto): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.url}/api/auth`,
+    return this.httpClient.post<JwtResponse>(`${environment.API_URL}/api/auth`,
     user).pipe(tap(
       (res: JwtResponse) => {
         if (res) {
