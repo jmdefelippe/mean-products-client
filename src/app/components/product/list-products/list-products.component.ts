@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { getToken } from 'src/app/utils/auth';
 @Component({
   selector: 'app-list-products',
@@ -22,13 +22,6 @@ export class ListProductsComponent implements OnInit {
     } else {
       this.router.navigate(['/productos']);
     }
-
-    // if (!localStorage.getItem("ACCESS_TOKEN")) {
-    //   this.router.navigate(['/login']);
-    // } else {
-    //   this.router.navigate(['/']);
-    // }
-
     this.getProducts();
   }
 

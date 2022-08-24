@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { getToken } from 'src/app/utils/auth';
 
 @Component({
   selector: 'app-create-user',
@@ -26,6 +27,9 @@ export class CreateUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (getToken()) {
+      this.router.navigate(['/']);
+    }
   }
 
   createUser() {

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
+import { getToken } from 'src/app/utils/auth';
 
 @Component({
   selector: 'app-create-product',
@@ -30,6 +31,11 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!getToken()) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/productos']);
+    }
     this.isUpdate();
   }
 

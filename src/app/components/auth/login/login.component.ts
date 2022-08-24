@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserLoginDto } from 'src/app/models/dto/userLoginDto';
+import { getToken } from 'src/app/utils/auth';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (getToken()) {
+      this.router.navigate(['/']);
+    }
   }
 
   login(): void {
