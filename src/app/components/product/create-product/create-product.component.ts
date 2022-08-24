@@ -34,7 +34,7 @@ export class CreateProductComponent implements OnInit {
     if (!getToken()) {
       this.router.navigate(['/login']);
     } else {
-      this.router.navigate(['/productos']);
+      this.router.navigate(['/crear-producto']);
     }
     this.isUpdate();
   }
