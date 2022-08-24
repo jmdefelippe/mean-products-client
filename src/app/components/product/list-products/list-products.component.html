@@ -1,10 +1,13 @@
 <div class="container mt-5">
   <div class="row">
-      <div class="col lg-8 offset-lg-2">
+      <div class="col lg-8">
           <div class="card">
-              <div class="card-body text-center">
-                  <span class="title">Listado de productos</span>
-                  <button class="btn btn-success float-end" routerLink="/crear-producto">Crear Producto</button>
+              <div class="card-body">
+                  <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <span class="title">Listado de productos</span>
+                    <input class="w-50" type="search" placeholder="Buscar"/>
+                    <button class="btn btn-success float-end" routerLink="/crear-producto">Crear Producto</button>
+                  </div>
                   <table *ngIf="listProducts.length > 0" class="table table-striped mt-3">
                       <thead>
                         <tr>
@@ -12,7 +15,7 @@
                           <th scope="col">Categoría</th>
                           <!-- <th scope="col">Ubicación</th> -->
                           <th scope="col">Precio</th>
-                          <th scope="col"></th>
+                          <th scope="col">Acciones</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -22,6 +25,7 @@
                           <!-- <td>{{ product.location }}</td>  -->
                           <td>{{ product.price | currency: 'USD' }}</td>
                           <td>
+                              <i [routerLink]="['/editar-producto', product._id]" class="fas fa-solid fa-align-justify text-primary"></i>
                               <i [routerLink]="['/editar-producto', product._id]" class="fas fa-edit text-primary"></i>
                               <i (click)="deleteProduct(product._id)" class="fas fa-trash text-danger"></i>
                           </td>
