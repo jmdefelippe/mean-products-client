@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { getToken } from 'src/app/utils/auth';
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -16,11 +17,17 @@ export class ListProductsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    if (!localStorage.getItem("ACCESS_TOKEN")) {
+    if (!getToken()) {
       this.router.navigate(['/login']);
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate(['/productos']);
     }
+
+    // if (!localStorage.getItem("ACCESS_TOKEN")) {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   this.router.navigate(['/']);
+    // }
 
     this.getProducts();
   }
