@@ -13,6 +13,8 @@ import { ListProductsComponent } from './components/product/list-products/list-p
 import { CreateUserComponent } from './components/auth/create-user/create-user.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HeaderComponent } from './components/layout/header/header.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HeaderComponent } from './components/layout/header/header.component';
     ListProductsComponent,
     CreateUserComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
