@@ -8,10 +8,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { CreateProductComponent } from './components/create-product/create-product.component';
-import { ListProductsComponent } from './components/list-products/list-products.component';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { ListProductsComponent } from './components/product/list-products/list-products.component';
 import { CreateUserComponent } from './components/auth/create-user/create-user.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { HeaderComponent } from './components/layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginComponent } from './components/auth/login/login.component';
     CreateProductComponent,
     ListProductsComponent,
     CreateUserComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
