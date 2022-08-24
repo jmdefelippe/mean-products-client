@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserLoginDto } from '../models/dto/userLoginDto';
 import { environment } from 'src/environments/environment';
-
+import { saveToken } from 'src/app/utils/auth';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +23,7 @@ export class AuthService {
     user).pipe(tap(
       (res: JwtResponse) => {
         if (res) {
-          this.saveToken(res.token, res.expiresIn);
+          saveToken(res.token, res.expiresIn);
         }
       }
     ))
@@ -34,28 +34,9 @@ export class AuthService {
     user).pipe(tap(
       (res: JwtResponse) => {
         if (res) {
-          this.saveToken(res.token, res.expiresIn);
+          saveToken(res.token, res.expiresIn);
         }
       }
     ))
-  }
-
-  logout() {
-    this.token = '';
-    localStorage.removeItem("ACCESS_TOKEN");
-    localStorage.removeItem("EXPIRES_IN");
-  }
-
-  private saveToken(token: string, expiresIn: string): void {
-    localStorage.setItem("ACCESS_TOKEN", token);
-    localStorage.setItem("EXPIRES_IN", expiresIn);
-    this.token = token;
-  }
-
-  private getToken(): string {
-    if (!this.token) {
-      this.token = localStorage.getItem("ACCESS_TOKEN") ?? '';
-    }
-    return this.token;
   }
 }
