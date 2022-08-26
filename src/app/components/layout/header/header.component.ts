@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { removeToken } from 'src/app/utils/auth';
+import { removeToken, isLogged } from 'src/app/utils/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
   logout() {
     removeToken();
     this.router.navigate(['/login']);
+  }
+
+  onIsLogged() {
+    return isLogged();
   }
 
 }
