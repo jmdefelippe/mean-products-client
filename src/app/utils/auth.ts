@@ -10,7 +10,7 @@ function saveToken(token: string, expiresIn: string): void {
 function removeToken() {
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
-  }
+}
 
 export {
     getToken,

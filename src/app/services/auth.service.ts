@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { JwtResponse } from '../models/jwt-response';
 import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserLoginDto } from '../models/dto/userLoginDto';
 import { environment } from 'src/environments/environment';
 import { saveToken } from 'src/app/utils/auth';
@@ -11,11 +11,21 @@ import { saveToken } from 'src/app/utils/auth';
   providedIn: 'root'
 })
 export class AuthService {
-  authSubject = new BehaviorSubject(false);
   private token: string;
+  loggedIn = false;
+  url = `${environment.API_URL}/api/users/`;
 
   constructor(private httpClient: HttpClient) {
     this.token = '';
+  }
+
+  private getOptions(): any {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:  `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
+      })
+    };
   }
 
   createUser(user: User): Observable<JwtResponse> {
@@ -35,8 +45,14 @@ export class AuthService {
       (res: JwtResponse) => {
         if (res) {
           saveToken(res.token, res.expiresIn);
+          this.loggedIn = true;
+          console.log(this.loggedIn)
         }
       }
     ))
+  }
+
+  getUser(id: string): Observable<any> {
+    return this.httpClient.get(this.url + id, this.getOptions());
   }
 }
