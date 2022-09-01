@@ -52,7 +52,7 @@ export class AuthService {
     ))
   }
 
-  getUser(id: string): Observable<any> {
-    return this.httpClient.get(this.url + id, this.getOptions());
+  getAuthenticatedUser(): Observable<any> {
+    return this.httpClient.get(`${environment.API_URL}/api/auth`, this.getOptions());
   }
 }
