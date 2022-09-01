@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+          <div class="card px-3">
+              <div class="card-body text-center">
+                <span class="title">{{ title | uppercase }}</span>
+                  <div class="mb-3">
+                    <div>Producto: {{id}}</div>
+                    <div>Categoría: {{product.category}}</div>
+                    <div>Ubicación: {{product.location}}</div>
+                    <div>Precio: {{product.price}}</div>
+                    <!-- <div class="">Fecha de creación: {{id}}</div> -->
+                  </div>
+                </div>
+              <div class="mb-3 text-center">
+                <button routerLink="/productos" class="btn btn-secondary">Volver</button>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

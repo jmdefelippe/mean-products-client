@@ -15,6 +15,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     HeaderComponent,
     FooterComponent,
     WelcomeComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

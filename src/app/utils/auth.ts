@@ -12,8 +12,13 @@ function removeToken() {
     localStorage.removeItem("EXPIRES_IN");
 }
 
+function isLogged() : boolean {
+  return getToken() ? true : false;
+}
+
 export {
     getToken,
     saveToken,
-    removeToken
+    removeToken,
+    isLogged
 }

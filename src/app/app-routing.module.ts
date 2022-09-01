@@ -7,6 +7,7 @@ import { ListProductsComponent } from './components/product/list-products/list-p
 import { CreateProductComponent } from './components/product/create-product/create-product.component'
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'productos', component: ListProductsComponent },
   { path: 'crear-producto', component: CreateProductComponent },
   { path: 'editar-producto/:id', component: CreateProductComponent },
+  { path: 'detalle-producto/:id', component: ProductDetailComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

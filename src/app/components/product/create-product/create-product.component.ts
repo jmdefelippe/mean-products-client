@@ -33,8 +33,6 @@ export class CreateProductComponent implements OnInit {
   ngOnInit(): void {
     if (!getToken()) {
       this.router.navigate(['/login']);
-    } else {
-      this.router.navigate(['/crear-producto']);
     }
     this.isUpdate();
   }
@@ -51,13 +49,13 @@ export class CreateProductComponent implements OnInit {
       // update product
       this._productService.updateProduct(this.id, PRODUCT).subscribe(data => {
         this.toastr.info('El producto fue actualizado con éxito!', 'Producto actualizado!', { timeOut: 1500 });
-        this.router.navigate(['/']);
+        this.router.navigate(['/productos']);
       })
     } else {
       // create product
       this._productService.createProduct(PRODUCT).subscribe(data => {
         this.toastr.success('El producto fue registrado con éxito!', 'Producto registrado!', { timeOut: 1500 });
-        this.router.navigate(['/']);
+        this.router.navigate(['/productos']);
       }, error => {
         console.log(error);
         this.productForm.reset();
@@ -78,5 +76,4 @@ export class CreateProductComponent implements OnInit {
       })
     }
   }
-
 }
